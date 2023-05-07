@@ -89,7 +89,8 @@ def generate_pdf_from_text(text_output_path, pdf_output_path):
     pdf.drawText(text_object)
     pdf.showPage()
     pdf.save()
-
+    
+# Load allow and ignore lists for different project types
 def load_lists(project_type):
     # Define allow and ignore lists for each project type
     if project_type.lower() == 'python':
@@ -113,6 +114,7 @@ def load_lists(project_type):
 
     return allow_list, ignore_list
 
+# Print progress bar and percentage for processed files
 def print_progress(processed_files, total_files, item_path):
     progress = (processed_files / total_files) * 100
     bar_length = 30
@@ -120,6 +122,7 @@ def print_progress(processed_files, total_files, item_path):
     bar = '█' * filled_length + '-' * (bar_length - filled_length)
     print(f'\rProgress: |{bar}| {progress:.1f}% ({processed_files}/{total_files}) Processing: {item_path[:50]}', end='', flush=True)
 
+# Count the total number of files in the input directory, considering the allow and ignore lists
 def count_files(input_dir, allow_list, ignore_list):
     total_files = 0
     for item in os.listdir(input_dir):
@@ -135,6 +138,7 @@ def count_files(input_dir, allow_list, ignore_list):
 
     return total_files
 
+# Process the input directory recursively, generating a markdown-formatted string with code snippets
 def process_directory(input_dir, ignored_extensions, allow_list, ignore_list, processed_files, total_files, depth=0, root_dir=None):
     if root_dir is None:
         root_dir = input_dir
@@ -160,6 +164,7 @@ def process_directory(input_dir, ignored_extensions, allow_list, ignore_list, pr
 
     return text_str, processed_files
 
+# Read the content of a file and return it as a markdown-formatted code block
 def process_file(file_path):
     text_code = ""
 
@@ -169,5 +174,6 @@ def process_file(file_path):
 
     return text_code
 
+# Execute the main function if the script is run directly
 if __name__ == "__main__":
     main()
