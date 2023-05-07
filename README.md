@@ -1,38 +1,30 @@
-# CodeRepo2PDF
+# README
 
-CodeRepo2PDF is a Python-based tool that converts source code repositories into HTML, PDF, and a single text file format. It is particularly useful for developers who want to analyze and discuss their projects using natural language processing tools like OpenAI's GPT-4.
+## CodeRepo2PDF
 
-## Features
+CodeRepo2PDF is a Python script that converts a code repository into a PDF file. It supports various project types, including Python, Node.js, Next.js, Django, and Flask. The script generates a PDF file with a hierarchical structure based on the directory and file structure, making it easier to navigate through the code.
 
-- Convert source code files in various formats into HTML and PDF
-- Generate a single text file containing the entire project, with file names presented before the code
-- Robust error handling and logging for failed and successful file conversions
-- Progress indicator to track total, successful, and failed conversions
-- Generate an ASCII map of the project structure
+### How to use
 
-## Requirements
+1. Install the required dependencies:
 
-- Python 3.6 or later
-- Pygments library: `pip install pygments`
-- WeasyPrint library: `pip install WeasyPrint`
+```bash
+pip install reportlab colorama
+```
 
-## Usage
+2. Run the script in the root directory of your project:
 
-1. Clone the repository and navigate to the project directory.
-2. Make sure the required libraries are installed.
-3. Run the script using `python code_repo_2_pdf.py`.
-4. When prompted, enter the output folder name. The output folder will be created at the root of the project.
-5. Monitor the progress as the script processes each file.
-6. Once the script has finished, you will find the generated HTML, PDF, single text file, project structure, and logs in the output folder.
+```bash
+python code_repo_2_pdf.py
+```
 
-## Customization
+3. Follow the prompts to select your project type. 
 
-To tailor CodeRepo2PDF to your specific project, you may need to modify the following variables in the script:
+4. The script will generate a PDF and text document in the 'CodeRepo2PDF' folder within your project directory.
 
-- `supported_extensions`: Add or remove file extensions to process.
-- `ignored_files`: Add or remove specific files you want to ignore during the conversion process.
+## Preparing for vector storage
 
-Additionally, you can adjust the HTML formatting options within the `HtmlFormatter` to improve the readability of the generated PDFs.
+Once you have generated the PDF file, you can use it to load your code repository into a vector storage system. This process typically involves converting the PDF file into a format that can be easily parsed and indexed by the storage system. The hierarchical structure in the generated PDF file will help AI navigate and organize your code repository more efficiently when working in conversational applications.
 
 ## Contributing
 
